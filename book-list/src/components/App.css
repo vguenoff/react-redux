@@ -1,0 +1,17 @@
+li {
+  cursor: pointer;
+}
+li:hover {
+  background: yellow;
+}
+.list-group-item {
+  padding: 0;
+}
+input[type="submit"] {
+  background: transparent;
+  border: none;
+  outline: none;
+  width: 100%;
+  text-align: left;
+  padding: 10px 15px;
+}
