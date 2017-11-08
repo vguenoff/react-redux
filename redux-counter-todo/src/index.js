@@ -1,38 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-// import { createStore } from 'redux';
-import createStore from './createStore';
-
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Counter from './Counter';
+import './index.css';
 
-// reducer
-const counter = (state = 0, action) => {
-  switch (action.type) {
-    case 'INCREMENT':
-      return state + 1;
-    case 'DECREMENT':
-      return state - 1;
-    default:
-      return state;
-  }
-};
+import reducers from './reducers/';
 
-const store = createStore(counter);
+import Counter from './components/Counter';
+import Todos from './components/Todos';
 
-const render = () => {
-  ReactDOM.render(
-    <div>
-      <Counter
-        value={store.getState()}
-        onIncrement={() => store.dispatch({ type: 'INCREMENT' })}
-        onDecrement={() => store.dispatch({ type: 'DECREMENT' })}
-      />
-    </div>,
-    document.getElementById('root')
-  );
-};
-
-store.subscribe(render);
-render();
+ReactDOM.render(
+  <Provider store={createStore(reducers)}>
+    <div className="container">
+      <Counter />
+      <hr />
+      <Todos />
+    </div>
+  </Provider>,
+  document.getElementById('root')
+);
