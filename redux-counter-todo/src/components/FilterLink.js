@@ -1,13 +1,9 @@
 import React from 'react';
 
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { setFilter } from '../actions/';
-
 const FilterLink = ({
   filter,
   currentFilter,
-  setFilter,
+  onClick,
   children
 }) => {
   return (filter === currentFilter) ? (
@@ -17,14 +13,11 @@ const FilterLink = ({
   ) : (
     <a
       href="#"
-      onClick={() => setFilter(filter)}
+      onClick={() => onClick(filter)}
     >
       {children}
     </a>
   );
-}
+};
 
-// const mapStateToProps = ({ filter }) => ({ filter });
-const mapDispatchToProps = dispatch => bindActionCreators({ setFilter }, dispatch);
-
-export default connect(null, mapDispatchToProps)(FilterLink);
+export default FilterLink;

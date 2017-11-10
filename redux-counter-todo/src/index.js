@@ -8,14 +8,14 @@ import './index.css';
 import reducers from './reducers/';
 
 import Counter from './components/Counter';
-import Todos from './components/Todos';
+import TodoApp from './components/TodoApp';
 
 ReactDOM.render(
   <Provider store={createStore(reducers)}>
     <div className="container">
       <Counter />
       <hr />
-      <Todos />
+      <TodoApp />
     </div>
   </Provider>,
   document.getElementById('root')
